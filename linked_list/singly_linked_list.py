@@ -1,5 +1,7 @@
 from node import Node
 from typing import Any
+from linked_list.exception_node import NodeNotFoundError
+
 
 
 class LinkedList:
@@ -54,71 +56,58 @@ class LinkedList:
 
                 current = current.next
 
-            raise ValueError("Data not found in the list")
+            raise NodeNotFoundError
 
-        except Exception as e:
-            print(f'Ocorred Exeception in remove data {e}')
+        except NodeNotFoundError as e:
+            print(f'Ocorred Exeception in remove data. {e}')
             return False
 
 
 
     def display(self) -> None:
-        try:
 
-            if self.is_empty():
-                raise ValueError("List is empty")
+        if self.is_empty():
+            print('List is empty')
 
-            current = self.head
+        current = self.head
 
-            while current:
+        while current:
 
-                print(current.data, end=' -> ')
-                current = current.next
+            print(current.data, end=' -> ')
+            current = current.next
 
-            print(None)
-
-        except Exception as e:
-            print(e)
+        print(None)
 
 
 
     def size(self) -> int:
-        try:
-            count = 0
-            current = self.head
 
-            while current:
+        count = 0
+        current = self.head
 
-                count += 1
+        while current:
 
-                current = current.next
+            count += 1
 
-            return count
+            current = current.next
 
-        except Exception as e:
-            print(e)
-            return 0
+        return count
 
 
 
     def search(self, data: Any) -> bool:
-        try:
-            current = self.head
-            found = False
 
-            while current and not found:
+        current = self.head
+        found = False
 
-                if current.data == data:
-                    found = True
-                else:
-                    current = current.next
+        while current and not found:
 
-            return found
+            if current.data == data:
+                found = True
+            else:
+                current = current.next
 
-        except Exception as e:
-            print(e)
-            return False
-
+        return found
 
 
 
@@ -127,7 +116,6 @@ def main():
     try:
         list_l = LinkedList()
 
-        list_l.add(10)
         list_l.add(1)
         list_l.add(120)
         list_l.add(200)
@@ -141,8 +129,11 @@ def main():
 
         print(list_l.search(1))
 
+        list_l.remove(10)
+
     except Exception as e:
         print(f'Ocorred Exeception in teste: {e}')
+
 
 
 
