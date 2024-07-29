@@ -5,7 +5,11 @@ from typing import Any, List
 
 
 class BinarySearchList:
-    """"""
+    """
+    Binary search is an algorithm that divides and 
+    searches data according to the size of the element,
+    avoiding going through each item in the structure
+    """
     
     def __init__(self) -> None:
         self.lst: List[Any] = []
@@ -17,30 +21,37 @@ class BinarySearchList:
 
 
 
-    def add(self, new_value) -> Any:
+    def add(self, new_value: Any) -> None:
         
+        # Finds the correct position to insert a new item
         index = 0
 
         while index < len(self.lst) and self.lst[index] < new_value:
+            # As long as the corresponding value in the index is less than the new
+            # will keep adding until find the dead end
             index += 1
         
         self.lst.insert(index, new_value)
 
 
 
-    def remove(self, value) -> Any:
+    def remove(self, value: Any) -> Any:
         
         if self.is_empty():
             print('Value Not Found')
             return None
 
-        self.lst.remove(value)
+        try:
+            self.lst.remove(value)
+            return value
+        
+        except ValueError:
+            print('This value cannot be removed.')
+            return None
 
-        return value
 
 
-
-    def search_bin(self, value) -> None:
+    def search_bin(self, value: Any) -> bool:
     
         if self.is_empty():
             print('The List is empty')

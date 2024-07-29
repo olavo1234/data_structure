@@ -1,6 +1,6 @@
 from node import Node
 from typing import Any
-from linked_list.exception_node import NodeNotFoundError
+from exception_node import NodeNotFoundError
 
 
 
@@ -8,6 +8,15 @@ class LinkedList:
     """
     Linked list is a structure that handles nodes,
     forming a line with head and methods for append, remove.
+    
+    
+    # [] -> data   [] Next
+    #   value      reference to new value 
+
+    
+    # Use of class LinkedList 
+    # head -> Node(1) -> Node(2) -> Node(3) -> None
+    #          (0x01)    (0x02)    (0x03)
     """
 
     def __init__(self) -> None:
@@ -25,16 +34,21 @@ class LinkedList:
         new_node = Node(data)
 
         if self.head is None:
+            # The new node become head
             self.head = new_node
             return
         
         current = self.head
-
+    
         while current.next:
+            # Walk the list with while loop
+            # The loop stop in node who has the next pointer 
 
             current = current.next
+            # Walk next node 
 
         current.next = new_node
+        # Set to next node in the pointer
 
 
 
@@ -42,19 +56,25 @@ class LinkedList:
         try:
             current = self.head
             prev = None
+            # Previous is the predecessor to current
 
             while current:
                 if current.data == data:
                     if prev:
-                        prev.next = current.next
+                        # Will change the next of the previous 
+                        # to be the next of the current 
+                        prev.next = current.next        
                     else:
+                        # Case the value is first
+                        # the head becomes a next pointer
                         self.head = current.next
 
                     return True
 
                 prev = current 
-
+                # Define the predecessor for current
                 current = current.next
+                # The pointer current moves to next node
 
             raise NodeNotFoundError
 
@@ -74,6 +94,7 @@ class LinkedList:
         while current:
 
             print(current.data, end=' -> ')
+            # Renew the pointer for next address
             current = current.next
 
         print(None)
@@ -111,6 +132,22 @@ class LinkedList:
 
 
 
+    def form_list(self) -> list:
+
+        lst = list()
+        current = self.head
+
+        while current:
+
+            lst.append(current.data)
+            
+            current = current.next
+        
+        return lst
+
+
+
+
 def main():
 
     try:
@@ -131,9 +168,10 @@ def main():
 
         list_l.remove(10)
 
+        print(f'Minha lista é: {list_l.form_list()}')
+
     except Exception as e:
         print(f'Ocorred Exeception in teste: {e}')
-
 
 
 
