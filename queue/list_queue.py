@@ -1,24 +1,22 @@
-from typing import List, Any
+from typing import List, Any, Optional
 
 
 
 
 class QueueList:
     """
-    Queue implementation by list in python. Use 
-    the concept FIFO(Fist in, Fist out) to add and remove elements.
+    Queue implementation using list in Python. Implements the FIFO (First In, First Out) principle.
 
-    >>> queue = QueueList([1,2,3,4])
-    >>> print(queue.get())
-    >>> 1
-    >>> print(queue.items)
-    >>> [2,3,4]
-    >>> print(queue.get_front())
-    >>> 2
-    
+    >>> queue = QueueList([1, 2, 3, 4])
+    >>> queue.get()
+    1
+    >>> queue.items
+    [2, 3, 4]
+    >>> queue.get_front()
+    2
     """
 
-    def __init__(self, iterable: Any | None = None) -> None:
+    def __init__(self, iterable: Optional[Any] = None) -> None:
         self.items: List[Any] = list(iterable or [])
 
 
@@ -31,35 +29,38 @@ class QueueList:
 
 
 
-    def get(self) -> Any:
+    def get(self) -> Optional[Any]:
         """Used for get the item of the queue and remove"""
-        try:    
-            if not self.is_empty():
-                return self.items.pop(0)
-            raise IndexError
-        except Exception:
-            print(f'List is empty')
+        if not self.is_empty():
+            return self.items.pop(0)
+        else:
+            print("List in empty")
+            return None
 
 
 
 
-    def get_front(self):
+    def get_front(self) -> Optional[Any]:
         """Used to only show the fist item"""
-        try:
+        if not self.is_empty():
             return self.items[0]
-        except IndexError:
-            print("List is empty")
+        else:
+            print("List in empty")
+            return None
 
 
 
 
-    def is_empty(self):
-        return not self.items
+
+    def is_empty(self) -> bool:
+        """Returns True if the queue is empty, False otherwise"""
+        return not bool(self.items)
 
 
 
 
-    def size(self): 
+    def size(self) -> int: 
+        """Returns the number of items in the queue"""
         return len(self.items)
 
 

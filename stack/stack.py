@@ -13,11 +13,11 @@ class Stack:
     >>> stack.push(2)
     >>> stack.push(3)
     >>> print(stack.pop()) 
-    >>> 3
+    3
     >>> print(stack.peek())   
-    >>> 2 
+    2 
     >>> print(stack.is_empty()) 
-    >>> False
+    False
     """
 
     def __init__(self) -> None:
