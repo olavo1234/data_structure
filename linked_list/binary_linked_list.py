@@ -2,6 +2,8 @@ from typing import Any
 
 
 
+
+
 class Node:
 
     def __init__(self, data: Any) -> None:
@@ -32,6 +34,16 @@ class Node:
 
 
 class Binary_Linked_List:
+    """
+    Binary search inplamentation in linked list.
+    
+    >>> binary_linked_list = Binary_Linked_List()
+    >>> print(binary_linked_list.search_bin(11))
+    False
+    >>> binary_linked_list.add(10)
+    >>> print(binary_linked_list.search_bin(10))
+    True
+    """
 
     def __init__(self) -> None:
         self.head = None
@@ -49,6 +61,7 @@ class Binary_Linked_List:
             current = current.next
         
         print(None)
+
 
 
 
@@ -100,6 +113,8 @@ class Binary_Linked_List:
     def search_bin(self, value: Any) -> bool:
         
         lst = self.form_list()
+        # The function is called for create is list 
+        # The list must be organized for searching
 
         bottom = 0
         higher = len(lst) - 1
@@ -132,8 +147,10 @@ class Binary_Linked_List:
         while current:
 
             while index < len(lst) and lst[index] < current.data:
+                # This compare lenght the list and value the node
                 index += 1
-
+            
+            # Insertion the node in list 
             lst.insert(index, current.data)
             
             current = current.next

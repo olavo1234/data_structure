@@ -3,6 +3,19 @@ from typing import List, Any
 
 
 
+
+class StackOverFlowError(Exception):
+    pass
+
+
+
+
+class StackUnderFlowError(Exception):
+    pass
+
+
+
+
 class Stack:
     """
     The Stack representation in the class. The Stack use the concept 

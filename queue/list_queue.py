@@ -5,7 +5,8 @@ from typing import List, Any, Optional
 
 class QueueList:
     """
-    Queue implementation using list in Python. Implements the FIFO (First In, First Out) principle.
+    Queue implementation using list in Python. Implements the
+    FIFO (First In, First Out) principle.
 
     >>> queue = QueueList([1, 2, 3, 4])
     >>> queue.get()
@@ -17,7 +18,11 @@ class QueueList:
     """
 
     def __init__(self, iterable: Optional[Any] = None) -> None:
-        self.items: List[Any] = list(iterable or [])
+        # Optional type notation is used to 
+        # Indicate that a value can be of a specific type or None.  
+        self.items: List[Any] = list(iterable or []) 
+        # If None, create the list else, inclement the iterable the user
+
 
 
 

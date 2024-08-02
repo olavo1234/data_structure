@@ -4,11 +4,13 @@ from typing import Any, List
 
 
 
+
 class BinarySearchList:
     """
     Binary search is an algorithm that divides and 
-    searches data according to the size of the element,
-    avoiding going through each item in the structure
+    searches data according to the size of the list,
+    avoiding going through each item in the structure.
+    This algorithm has O(log2) complexity, making fewer operations.
     """
     
     def __init__(self) -> None:

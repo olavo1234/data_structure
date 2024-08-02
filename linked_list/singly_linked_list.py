@@ -1,6 +1,62 @@
-from node import Node
 from typing import Any
-from exception_node import NodeNotFoundError
+
+
+
+
+
+
+
+class NodeNotFoundError(Exception):
+    """Exeception for nodes not found"""
+
+    def __init__(self, message='Node not Found in the operation.') -> None:
+        self.message = message
+        super().__init__(self.message)
+
+
+
+
+class Node:
+    """
+    In the linked list, a node is used to store data.
+    Each node contains two elements:
+    the value and the reference to the next node. 
+    """
+
+    def __init__(self, data: Any) -> None:
+        self.__data = data
+        self.__next = None
+
+
+
+
+    @property
+    # Used decorator in metode 
+    # To make in getters in setters
+    def data(self) -> Any:
+        return self.__data
+
+
+
+
+    @property
+    def next(self) -> Any:
+        return self.__next
+
+
+
+
+    @data.setter
+    def data(self, new_data: Any) -> None:
+        self.__data = new_data
+
+
+
+
+    @next.setter
+    def next(self, new_next: Any) -> None:
+        self.__next = new_next
+
 
 
 
@@ -53,34 +109,30 @@ class LinkedList:
 
 
     def remove(self, data: Any) -> bool:
-        try:
-            current = self.head
-            prev = None
-            # Previous is the predecessor to current
+        current = self.head
+        prev = None
+        # Previous is the predecessor to current
 
-            while current:
-                if current.data == data:
-                    if prev:
-                        # Will change the next of the previous 
-                        # to be the next of the current 
-                        prev.next = current.next        
-                    else:
-                        # Case the value is first
-                        # the head becomes a next pointer
-                        self.head = current.next
+        while current:
+            if current.data == data:
+                if prev:
+                    # Will change the next of the previous 
+                    # to be the next of the current 
+                    prev.next = current.next        
+                else:
+                    # Case the value is first
+                    # the head becomes a next pointer
+                    self.head = current.next
 
-                    return True
+                return True
 
-                prev = current 
-                # Define the predecessor for current
-                current = current.next
-                # The pointer current moves to next node
+            prev = current 
+            # Define the predecessor for current
+            current = current.next
+            # The pointer current moves to next node
 
-            raise NodeNotFoundError
+        raise NodeNotFoundError
 
-        except NodeNotFoundError as e:
-            print(f'Ocorred Exeception in remove data. {e}')
-            return False
 
 
 
