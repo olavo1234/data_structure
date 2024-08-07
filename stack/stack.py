@@ -113,6 +113,7 @@ class Stack:
 
     def __bool__(self) -> bool:
         """For iteration with the while"""
+        # Returns the inverse of the empty method
         return not self.is_empty()
 
 
