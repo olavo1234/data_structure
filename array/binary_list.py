@@ -4,7 +4,6 @@ from typing import Any, List
 
 
 
-
 class BinarySearchList:
     """
     Binary search is an algorithm that divides and 
@@ -24,7 +23,7 @@ class BinarySearchList:
 
 
     def add(self, new_value: Any) -> None:
-        
+        """Method that adds elements to a list in ascending order."""
         # Finds the correct position to insert a new item
         index = 0
 
@@ -38,9 +37,8 @@ class BinarySearchList:
 
 
     def remove(self, value: Any) -> Any:
-        
         if self.is_empty():
-            print('Value Not Found')
+            print('Value Not Found.')
             return None
 
         try:
@@ -54,7 +52,10 @@ class BinarySearchList:
 
 
     def search_bin(self, value: Any) -> bool:
-    
+        """
+        This method is what it will look for, slicing the list 
+        into parts and comparing the elements.
+        """
         if self.is_empty():
             print('The List is empty')
             return None
@@ -88,9 +89,8 @@ class BinarySearchList:
 
 
     def display(self) -> None:
-
         if self.is_empty():
-            print('The List is empty')
+            print('The List is empty.')
         
         for _ in self.lst:
             print(_)

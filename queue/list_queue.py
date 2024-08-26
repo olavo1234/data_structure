@@ -3,6 +3,7 @@ from typing import List, Any, Optional
 
 
 
+
 class QueueList:
     """
     Queue implementation using list in Python. Implements the
@@ -16,7 +17,7 @@ class QueueList:
     >>> queue.get_front()
     2
     """
-
+    
     def __init__(self, iterable: Optional[Any] = None) -> None:
         # Optional type notation is used to 
         # Indicate that a value can be of a specific type or None.  
@@ -25,49 +26,41 @@ class QueueList:
 
 
 
-
-
     def put(self, item: Any) -> None:
-        """Sed for adds items in queue"""
+        """Sed for adds items in queue."""
         self.items.append(item)
 
 
 
-
     def get(self) -> Optional[Any]:
-        """Used for get the item of the queue and remove"""
+        """Used for get the item of the queue and remove."""
         if not self.is_empty():
             return self.items.pop(0)
         else:
-            print("List in empty")
+            print("List in empty.")
             return None
-
 
 
 
     def get_front(self) -> Optional[Any]:
-        """Used to only show the fist item"""
+        """Used to only show the fist item."""
         if not self.is_empty():
             return self.items[0]
         else:
-            print("List in empty")
+            print("List in empty.")
             return None
 
 
 
-
-
     def is_empty(self) -> bool:
-        """Returns True if the queue is empty, False otherwise"""
+        """Returns True if the queue is empty, False otherwise."""
         return not bool(self.items)
 
 
 
-
     def size(self) -> int: 
-        """Returns the number of items in the queue"""
+        """Returns the number of items in the queue."""
         return len(self.items)
-
 
 
 

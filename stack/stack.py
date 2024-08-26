@@ -5,14 +5,14 @@ from typing import List, Any
 
 
 class StackOverFlowError(Exception):
-    """Will be thrown if the stack limit is exceeded"""
+    """Will be thrown if the stack limit is exceeded."""
     pass
 
 
 
 
 class StackUnderFlowError(Exception):
-    """Will be thrown if you perform the operation on the empty stack"""
+    """Will be thrown if you perform the operation on the empty stack."""
     pass
 
 
@@ -22,7 +22,7 @@ class Stack:
     """
     Stack uses the concept LIFO (last in, first out) for 
     adding and removing elements. push() Adds elements to the stack,
-    pop() removes elements, peek() returns the fist element
+    pop() removes elements, peek() returns the fist element.
 
     >>> stack = Stack()
     >>> stack.push(1)
@@ -44,15 +44,13 @@ class Stack:
 
 
 
-
     def is_empty(self) -> bool:
         return len(self.__data) == 0 
 
 
 
-
     def push(self, item: Any) -> None:
-        """Add an item to the top of the stack"""
+        """Add an item to the top of the stack."""
         if self.size() >= self.__limit:
             raise StackOverFlowError
         
@@ -60,9 +58,8 @@ class Stack:
 
 
 
-
     def pop(self) -> Any:
-        """Represent the pop of list no parameter"""
+        """Represent the pop of list no parameter."""
         if self.is_empty():
             raise StackUnderFlowError
 
@@ -70,9 +67,8 @@ class Stack:
 
 
 
-
     def peek(self) -> Any:
-        """Returns the fist element in stack"""
+        """Returns the fist element in stack."""
         if self.is_empty():
             raise StackUnderFlowError
         
@@ -86,22 +82,20 @@ class Stack:
 
 
     def __repr__(self) -> str:
-        """Get the data in string format"""
+        """Get the data in string format."""
         return str(self.__data)
 
 
 
-
     def __iter__(self):
-        """Iteration to loop 'for'"""
+        """Iteration to loop 'for'."""
         self.__index = len(self.__data) - 1 # starts from the last element
         return self
 
 
 
-
     def __next__(self):
-        """Next item for the loop iteration"""
+        """Next item for the loop iteration."""
         if self.__index == 0:
             raise StopIteration
 
@@ -110,9 +104,8 @@ class Stack:
 
 
 
-
     def __bool__(self) -> bool:
-        """For iteration with the while"""
+        """For iteration with the while."""
         # Returns the inverse of the empty method
         return not self.is_empty()
 
@@ -136,7 +129,6 @@ def main():
     print(stack_lst.pop())
     print(stack_lst.peek())
     print(stack_lst.is_empty())
-
 
 
 
