@@ -11,9 +11,11 @@ class Node:
         self.__next = None
 
 
+
     @property
     def data(self) -> Any:
         return self.__data
+
 
 
     @property
@@ -21,10 +23,12 @@ class Node:
         return self.__next
 
 
+
     @data.setter
     def data(self, new_data: Any) -> None:
         self.__data = new_data
-    
+
+
 
     @next.setter
     def next(self, new_next: Any) -> None:
@@ -51,7 +55,6 @@ class Binary_Linked_List:
 
 
     def display(self) -> None:
-        
         current = self.head
 
         while current:
@@ -64,9 +67,19 @@ class Binary_Linked_List:
 
 
 
+    def add_start_list(self, data: Any) -> None:
+        new_node = Node(data)
+        
+        if self.head is None:
+            self.head = new_node
+            return
+        
+        new_node.next = self.head
+        self.head = new_node
 
-    def add(self, new_data: Any) -> None:
 
+
+    def add_end_list(self, new_data: Any) -> None:
         new_node = Node(new_data)
 
         if self.head is None:
@@ -86,9 +99,7 @@ class Binary_Linked_List:
 
 
 
-
     def remove(self, data: Any) -> None:
-        
         current = self.head
         prev = None
 
@@ -109,9 +120,29 @@ class Binary_Linked_List:
 
 
 
+    def form_list(self) -> list:
+        """Method of adding nodes to a list in ascending order."""
+        lst = list()
+        current = self.head
+
+        index = 0
+
+        while current:
+
+            while index < len(lst) and lst[index] < current.data:
+                # This compare lenght the list and value the node
+                index += 1
+            
+            # Insertion the node in list 
+            lst.insert(index, current.data)
+            
+            current = current.next
+        
+        return lst
+
+
 
     def search_bin(self, value: Any) -> bool:
-        
         lst = self.form_list()
         # The function is called for create is list 
         # The list must be organized for searching
@@ -137,29 +168,6 @@ class Binary_Linked_List:
 
 
 
-    def form_list(self) -> list:
-        
-        lst = list()
-        current = self.head
-
-        index = 0
-
-        while current:
-
-            while index < len(lst) and lst[index] < current.data:
-                # This compare lenght the list and value the node
-                index += 1
-            
-            # Insertion the node in list 
-            lst.insert(index, current.data)
-            
-            current = current.next
-        
-        return lst
-
-
-
-
 def main():
 
     binary_linked_list = Binary_Linked_List()
@@ -177,7 +185,6 @@ def main():
     binary_linked_list.display()
 
     print(binary_linked_list.search_bin(11))
-
 
 
 
